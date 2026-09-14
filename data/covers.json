@@ -1,0 +1,74 @@
+{
+  "zelda-tears-switch": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg",
+    "capa_fonte": "https://en.wikipedia.org/wiki/The_Legend_of_Zelda%3A_Tears_of_the_Kingdom",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/The_Legend_of_Zelda%3A_Tears_of_the_Kingdom",
+    "capa_consultada_em": "2026-09-14T22:37:57.077762+00:00"
+  },
+  "mario-wonder-switch": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/a/a3/Mariowonder.png",
+    "capa_fonte": "https://en.wikipedia.org/wiki/Super_Mario_Bros._Wonder",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/Super_Mario_Bros._Wonder",
+    "capa_consultada_em": "2026-09-14T22:38:18.511182+00:00"
+  },
+  "spider-man-2-ps5": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/0/0f/SpiderMan2PS5BoxArt.jpeg",
+    "capa_fonte": "https://en.wikipedia.org/wiki/Marvel's_Spider-Man_2",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/Spider-Man_2_%282023_video_game%29",
+    "capa_consultada_em": "2026-09-14T22:38:39.968821+00:00"
+  },
+  "elden-ring-ps5": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/b/b9/Elden_Ring_Box_art.jpg",
+    "capa_fonte": "https://en.wikipedia.org/wiki/Elden_Ring",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/Elden_Ring",
+    "capa_consultada_em": "2026-09-14T22:39:01.413359+00:00"
+  },
+  "god-of-war-ragnarok-ps5": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/e/ee/God_of_War_Ragnar%C3%B6k_cover.jpg",
+    "capa_fonte": "https://en.wikipedia.org/wiki/God_of_War_Ragnar%C3%B6k",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/God_of_War_Ragnar%C3%B6k",
+    "capa_consultada_em": "2026-09-14T22:39:44.340978+00:00"
+  },
+  "forza-horizon-5-xbox": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/8/86/Forza_Horizon_5_cover_art.jpg",
+    "capa_fonte": "https://en.wikipedia.org/wiki/Forza_Horizon_5",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/Forza_Horizon_5",
+    "capa_consultada_em": "2026-09-14T22:40:05.667778+00:00"
+  },
+  "animal-crossing-switch": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/1/1f/Animal_Crossing_New_Horizons.jpg",
+    "capa_fonte": "https://en.wikipedia.org/wiki/Animal_Crossing%3A_New_Horizons",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/Animal_Crossing%3A_New_Horizons",
+    "capa_consultada_em": "2026-09-14T22:40:27.132990+00:00"
+  },
+  "halo-infinite-xbox": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/1/14/Halo_Infinite.png",
+    "capa_fonte": "https://en.wikipedia.org/wiki/Halo_Infinite",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/Halo_Infinite",
+    "capa_consultada_em": "2026-09-14T22:40:48.576906+00:00"
+  },
+  "kirby-forgotten-land-switch": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/e/e7/Kirby_and_The_Forgotten_Land_Icon.jpg",
+    "capa_fonte": "https://en.wikipedia.org/wiki/Kirby_and_the_Forgotten_Land",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/Kirby_and_the_Forgotten_Land",
+    "capa_consultada_em": "2026-09-14T22:41:10.053795+00:00"
+  },
+  "resident-evil-4-ps5": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/d/df/Resident_Evil_4_remake_cover_art.jpg",
+    "capa_fonte": "https://en.wikipedia.org/wiki/Resident_Evil_4_(2023_video_game)",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/Resident_Evil_4_%282023_video_game%29",
+    "capa_consultada_em": "2026-09-14T22:41:31.505000+00:00"
+  },
+  "hogwarts-legacy-xbox": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/f/fb/Hogwarts_legacyboxart.png",
+    "capa_fonte": "https://en.wikipedia.org/wiki/Hogwarts_Legacy",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/Hogwarts_Legacy",
+    "capa_consultada_em": "2026-09-14T22:41:52.954422+00:00"
+  },
+  "mario-odyssey-switch": {
+    "capa_url": "https://upload.wikimedia.org/wikipedia/en/8/8d/Super_Mario_Odyssey.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "capa_fonte": "https://en.wikipedia.org/wiki/Super_Mario_Odyssey",
+    "capa_api": "https://en.wikipedia.org/api/rest_v1/page/summary/Super_Mario_Odyssey",
+    "capa_consultada_em": "2026-09-14T23:17:04.811432+00:00"
+  }
+}

@@ -1,0 +1,45 @@
+# Future deployment: the database and its persistent disk require paid resources.
+# Review current pricing in Render before creating this Blueprint.
+services:
+  - type: pserv
+    name: playshelf-db
+    runtime: docker
+    dockerfilePath: ./deploy/Dockerfile.couchdb
+    plan: starter
+    envVars:
+      - key: COUCHDB_USER
+        value: playshelf_admin
+      - key: COUCHDB_PASSWORD
+        generateValue: true
+    disk:
+      name: playshelf-data
+      mountPath: /opt/couchdb/data
+      sizeGB: 1
+  - type: web
+    name: playshelf
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: flask --app app init-db && waitress-serve --listen=0.0.0.0:$PORT app:app
+    healthCheckPath: /healthz
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.11
+      - key: SECRET_KEY
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: COUCHDB_DATABASE
+        value: playshelf
+      - key: COUCHDB_USER
+        value: playshelf_admin
+      - key: COUCHDB_PASSWORD
+        fromService:
+          name: playshelf-db
+          type: pserv
+          envVarKey: COUCHDB_PASSWORD
+      - key: COUCHDB_HOST
+        fromService:
+          name: playshelf-db
+          type: pserv
+          property: host

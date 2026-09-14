@@ -1,0 +1,26 @@
+{% from 'macros.html' import icon %}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f2">
+  <meta name="description" content="PlayShelf: jogos em mídia física para a sua coleção. Projeto acadêmico com compras simuladas.">
+  <title>{% block title %}PlayShelf — O próximo capítulo da sua coleção{% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Pular para o conteúdo</a>
+  <div class="announcement"><span class="red-dot"></span> Histórias para jogar. Jogos para guardar. <span class="demo-label">Loja demonstrativa · sem cobranças</span></div>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="{{ url_for('home') }}" aria-label="PlayShelf início"><span class="brand-symbol">{{ icon('game', 25) }}</span>PlayShelf<span class="brand-dot">.</span></a>
+    <nav class="desktop-nav" aria-label="Navegação principal"><a class="{{ 'current' if request.endpoint == 'home' }}" href="{{ url_for('home') }}#catalogo">Explorar</a><a href="{{ url_for('home', console='switch') }}#catalogo">Nintendo</a><a href="{{ url_for('home', console='ps5') }}#catalogo">PlayStation</a><a href="{{ url_for('home', console='xbox') }}#catalogo">Xbox</a></nav>
+    <div class="header-actions"><button class="icon-button search-toggle" aria-label="Abrir busca" aria-expanded="false" aria-controls="search-panel">{{ icon('search') }}</button><a class="icon-button account-button" href="{{ url_for('orders' if customer else 'login') }}" aria-label="{{ 'Minha conta' if customer else 'Entrar' }}">{{ icon('user') }}</a><a class="bag-link" href="{{ url_for('cart') }}" aria-label="Sacola, {{ cart_count }} itens">{{ icon('bag') }}<span class="bag-word">Sacola</span><span class="bag-count">{{ cart_count }}</span></a></div>
+  </div>
+  <div class="search-panel" id="search-panel" hidden><form action="{{ url_for('home') }}#catalogo" role="search"><label class="sr-only" for="header-search">Buscar jogos</label>{{ icon('search') }}<input id="header-search" type="search" name="q" placeholder="Qual será sua próxima aventura?" maxlength="100"><button class="button small">Buscar</button></form></div></header>
+  {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="flash-container" role="status">{% for category, message in messages %}<div class="flash {{ category }}">{{ icon('check',18) }}<span>{{ message }}</span><button type="button" class="dismiss-flash" aria-label="Fechar aviso">×</button></div>{% endfor %}</div>{% endif %}{% endwith %}
+  <main id="main">{% block content %}{% endblock %}</main>
+  <footer class="site-footer"><div class="footer-top"><div><a class="brand" href="{{ url_for('home') }}">PlayShelf<span class="brand-dot">.</span></a><p>Alguns jogos merecem<br>um lugar na sua estante.</p></div><div class="footer-links"><a href="{{ url_for('home') }}#catalogo">Encontre seu jogo</a><a href="{{ url_for('orders') }}">Meus pedidos</a><a href="{{ url_for('about') }}">Sobre a PlayShelf</a></div><span class="footer-signature">PRESS PLAY.<br><span>KEEP FOREVER.</span></span></div><div class="footer-bottom"><span>© 2026 PlayShelf · Projeto acadêmico FACAMP</span><span>Preços, estoque, frete e compras simulados. Nenhum pagamento é realizado.</span></div></footer>
+  <nav class="mobile-nav" aria-label="Navegação no celular"><a href="{{ url_for('home') }}#catalogo">{{ icon('grid') }}<span>Explorar</span></a><button class="search-toggle" aria-label="Abrir busca" aria-expanded="false" aria-controls="search-panel">{{ icon('search') }}<span>Buscar</span></button><a href="{{ url_for('cart') }}">{{ icon('bag') }}<span>Sacola ({{ cart_count }})</span></a><a href="{{ url_for('orders' if customer else 'login') }}">{{ icon('user') }}<span>Minha conta</span></a></nav>
+</body></html>

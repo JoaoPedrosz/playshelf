@@ -1,0 +1,40 @@
+{% macro icon(name, size=22) -%}
+<svg width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{% if name == 'bag' %}<path d="M5 7h14l1 14H4L5 7Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>
+{% elif name == 'search' %}<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/>
+{% elif name == 'user' %}<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>
+{% elif name == 'arrow' %}<path d="M4 12h15m-6-6 6 6-6 6"/>
+{% elif name == 'plus' %}<path d="M5 12h14M12 5v14"/>
+{% elif name == 'check' %}<path d="m5 12 4 4L19 6"/>
+{% elif name == 'truck' %}<path d="M2 6h12v12H2zM14 10h4l4 4v4h-8"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/>
+{% elif name == 'disc' %}<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="m5 8 3-3m8 14 3-3"/>
+{% elif name == 'game' %}<path d="M7 7h10c3 0 5 11 2 11-2 0-3-3-4-3H9c-1 0-2 3-4 3C2 18 4 7 7 7Z"/><path d="M7 10v4m-2-2h4m7-1h.01m2 2h.01"/>
+{% elif name == 'grid' %}<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>
+{% elif name == 'lock' %}<rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/>
+{% elif name == 'back' %}<path d="M20 12H5m6-6-6 6 6 6"/>
+{% endif %}</svg>
+{%- endmacro %}
+
+{% macro box(product, extra='') -%}
+<div class="game-box {{ product.console }} {{ extra }}">
+  <div class="box-band">{% if product.console == 'switch' %}NINTENDO SWITCH{% elif product.console == 'ps5' %}PS5{% else %}XBOX{% endif %}</div>
+  <img src="{{ product.get('capa_url') or url_for('static', filename='cover-fallback.svg') }}" alt="Capa de {{ product.nome }}" loading="{{ 'eager' if extra else 'lazy' }}" width="300" height="420" data-cover>
+</div>
+{%- endmacro %}
+
+{% macro card(product) -%}
+<article class="product-card">
+  <a class="product-art" style="--game-color:{{ product.cor }}" href="{{ url_for('product', slug=product.slug) }}" aria-label="Ver {{ product.nome }}">
+    <span class="art-label">{{ product.genero }}</span>
+    {{ box(product) }}
+    <span class="art-note">MÍDIA FÍSICA</span>
+  </a>
+  <div class="product-info">
+    <span class="platform-label {{ product.console }}">{{ product.plataforma }}</span>
+    <a class="product-title" href="{{ url_for('product', slug=product.slug) }}">{{ product.titulo_curto }}</a>
+    <div class="product-bottom"><div><strong>{{ product.preco_centavos|money }}</strong><small>Novo e lacrado</small></div>
+      <form method="post" action="{{ url_for('add_cart', slug=product.slug) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="add-button" aria-label="Adicionar {{ product.nome }} à sacola" {% if product.estoque < 1 %}disabled{% endif %}>{{ icon('plus') }}</button></form>
+    </div>
+  </div>
+</article>
+{%- endmacro %}

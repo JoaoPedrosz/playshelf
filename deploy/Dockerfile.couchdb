@@ -1,0 +1,2 @@
+FROM couchdb:3.5.2
+COPY deploy/couchdb-local.ini /opt/couchdb/etc/local.d/single-node.ini

@@ -1,0 +1,60 @@
+{
+  "executado_em": "2026-09-14T23:18:45.620809+00:00",
+  "couchdb": "3.5.2",
+  "conflito": {
+    "http": 409,
+    "rev_anterior": "1-9be79e4d52ebc8a6cd11c522df36cdee",
+    "rev_atual": "2-2cb741fdf61b3fedf93e85d92f3e9836"
+  },
+  "consulta_mango": {
+    "consulta": {
+      "selector": {
+        "tipo": "produto",
+        "plataforma": "PlayStation 5",
+        "preco_centavos": {
+          "$lte": 25000
+        }
+      },
+      "use_index": "plataforma_preco",
+      "fields": [
+        "_id",
+        "nome",
+        "preco_centavos"
+      ]
+    },
+    "indice_escolhido": "plataforma_preco",
+    "resultados": [
+      {
+        "_id": "produto:resident-evil-4-ps5",
+        "nome": "Resident Evil 4",
+        "preco_centavos": 18990
+      },
+      {
+        "_id": "produto:elden-ring-ps5",
+        "nome": "Elden Ring",
+        "preco_centavos": 19990
+      },
+      {
+        "_id": "produto:god-of-war-ragnarok-ps5",
+        "nome": "God of War Ragnarök",
+        "preco_centavos": 22990
+      },
+      {
+        "_id": "produto:spider-man-2-ps5",
+        "nome": "Marvel’s Spider-Man 2",
+        "preco_centavos": 24990
+      }
+    ]
+  },
+  "checkout": {
+    "status": "CONFIRMADO",
+    "estoque_final": 1,
+    "mesmo_pedido_ao_repetir": true,
+    "total_centavos": 31480
+  },
+  "replicacao": {
+    "escopo": "Dois bancos na mesma instância local; demonstra o protocolo, não alta disponibilidade.",
+    "ok": true,
+    "pedido_preservado": true
+  }
+}

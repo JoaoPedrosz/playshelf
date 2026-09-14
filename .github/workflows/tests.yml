@@ -1,0 +1,30 @@
+name: Validate PlayShelf
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      couchdb:
+        image: couchdb:3.5.2
+        env:
+          COUCHDB_USER: testadmin
+          COUCHDB_PASSWORD: integration-test-only
+        ports: ["5984:5984"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-dev.txt
+      - name: Wait for CouchDB and initialize a single node
+        run: |
+          for attempt in {1..30}; do
+            curl -fsS http://127.0.0.1:5984/_up && break
+            sleep 2
+          done
+          curl --fail-with-body -u testadmin:integration-test-only -H 'Content-Type: application/json' -d '{"action":"enable_single_node","username":"testadmin","password":"integration-test-only","bind_address":"0.0.0.0","port":5984,"singlenode":true}' http://127.0.0.1:5984/_cluster_setup
+      - run: pytest -q
+        env:
+          COUCHDB_TEST_URL: http://127.0.0.1:5984
+          COUCHDB_TEST_USER: testadmin
+          COUCHDB_TEST_PASSWORD: integration-test-only
