@@ -104,8 +104,8 @@ tests/                 regras, rotas e integração com CouchDB
 scripts/               capas e demonstração documental
 docs/                  material acadêmico e evidências
 deploy/                configuração do CouchDB
-render.yaml            Blueprint persistente (pago)
-render-free.yaml       Blueprint acadêmico gratuito (dados efêmeros)
+render.yaml            Blueprint acadêmico gratuito (padrão; dados efêmeros)
+render-paid.yaml       Blueprint persistente (pago)
 ```
 
 ## Estado da entrega

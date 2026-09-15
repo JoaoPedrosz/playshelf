@@ -16,20 +16,20 @@ Há duas configurações independentes:
 
 | Arquivo | Custo inicial | Comportamento |
 |---|---:|---|
-| `render-free.yaml` | US$ 0 | Flask e CouchDB real no mesmo contêiner; catálogo é recriado e contas/pedidos somem após suspensão, reinício ou deploy |
-| `render.yaml` | Aproximadamente US$ 43,25/mês | Web separada, CouchDB privado e disco persistente de 1 GB |
+| `render.yaml` | US$ 0 | Flask e CouchDB real no mesmo contêiner; catálogo é recriado e contas/pedidos somem após suspensão, reinício ou deploy |
+| `render-paid.yaml` | Aproximadamente US$ 43,25/mês | Web separada, CouchDB privado e disco persistente de 1 GB |
 
 Os valores refletem a tabela consultada em setembro de 2026 e podem mudar. O plano gratuito é adequado para uma demonstração acadêmica, desde que a perda de dados seja declarada. Ele não publica a porta do CouchDB: somente a loja fica acessível. A arquitetura persistente é a referência para continuidade dos pedidos.
 
 ### Prévia acadêmica gratuita
 
-Ao criar o Blueprint, informe `render-free.yaml` no campo **Blueprint Path**. Um único serviço Docker instala o Python, inicia um CouchDB 3.5.2 local ao contêiner, inicializa o catálogo e serve o Flask. O Render gera chaves aleatórias e não pede cartão para esse plano.
+Ao criar o Blueprint, deixe o campo **Blueprint Path** vazio. O Render usa o `render.yaml` da raiz por padrão. Um único serviço Docker instala o Python, inicia um CouchDB 3.5.2 local ao contêiner, inicializa o catálogo e serve o Flask. O Render gera chaves aleatórias e não pede cartão para esse plano.
 
 Serviços gratuitos suspendem após inatividade. Ao voltar, a primeira abertura pode levar cerca de um minuto e o banco começa novamente com os 12 produtos. Não use dados pessoais reais na demonstração.
 
 ### Arquitetura persistente paga
 
-O arquivo `render.yaml` descreve dois serviços:
+O arquivo `render-paid.yaml` descreve dois serviços:
 
 - **playshelf:** Flask servido por Waitress, com HTTPS oferecido pelo Render e health check em `/healthz`.
 - **playshelf-db:** CouchDB em serviço privado, com disco persistente em `/opt/couchdb/data`.
