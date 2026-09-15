@@ -1,0 +1,22 @@
+FROM couchdb:3.5.2
+
+USER root
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends python3 python3-venv curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+COPY requirements.txt ./
+RUN python3 -m venv /opt/playshelf-venv \
+    && /opt/playshelf-venv/bin/pip install --no-cache-dir -r requirements.txt
+
+COPY --chown=couchdb:couchdb . /app
+COPY --chown=couchdb:couchdb deploy/couchdb-demo.ini /opt/couchdb/etc/local.d/20-playshelf-demo.ini
+COPY --chown=couchdb:couchdb deploy/start-demo.sh /usr/local/bin/start-playshelf-demo
+RUN chmod 755 /usr/local/bin/start-playshelf-demo
+
+USER couchdb
+ENV PATH="/opt/playshelf-venv/bin:${PATH}"
+EXPOSE 10000
+ENTRYPOINT ["tini", "--"]
+CMD ["/usr/local/bin/start-playshelf-demo"]

@@ -13,7 +13,7 @@ Projeto da disciplina TAI/FACAMP: **Python + Flask + Apache CouchDB**, persistê
 - Checkout com frete padrão/expresso, preços conferidos no servidor e baixa de estoque.
 - Proteção contra pedido duplicado, conflito de estoque e compensação de reservas parciais.
 - Capas obtidas por API, links de origem e alternativa visual quando uma imagem falha.
-- Testes automatizados, demonstração do banco, Docker e configuração futura do Render.
+- Testes automatizados, demonstração do banco, Docker e duas configurações para o Render.
 
 ## Comece por aqui
 
@@ -22,7 +22,7 @@ Projeto da disciplina TAI/FACAMP: **Python + Flask + Apache CouchDB**, persistê
 | [Projeto e modelagem](docs/PROJETO.md) | Requisitos, documentos JSON, decisões, índices, segurança e limites |
 | [Roteiro de apresentação](docs/APRESENTACAO.md) | Demonstração da loja e atividades no Fauxton |
 | [Questões dissertativas](docs/QUESTOES.md) | Dez respostas para estudar e adaptar à apresentação |
-| [GitHub Desktop e Render](docs/PUBLICACAO.md) | Publicação privada manual e próximo deploy |
+| [GitHub Desktop e Render](docs/PUBLICACAO.md) | Publicação privada e deploy gratuito ou persistente |
 | [Evidências](docs/evidencias/README.md) | Resultados realmente executados |
 
 ## Executar em outro computador
@@ -104,11 +104,12 @@ tests/                 regras, rotas e integração com CouchDB
 scripts/               capas e demonstração documental
 docs/                  material acadêmico e evidências
 deploy/                configuração do CouchDB
-render.yaml            Blueprint para o deploy futuro
+render.yaml            Blueprint persistente (pago)
+render-free.yaml       Blueprint acadêmico gratuito (dados efêmeros)
 ```
 
 ## Estado da entrega
 
-Aplicação e banco verificados localmente. Publicação no GitHub reservada ao usuário pelo GitHub Desktop, em repositório privado. Render preparado, **ainda não implantado**. O Blueprint utiliza serviço privado e disco persistente, que exigem revisar os planos e custos no Render antes de ativar.
+Aplicação e banco verificados localmente. Repositório privado publicado no GitHub. O Render oferece nesta entrega uma prévia gratuita com dados efêmeros e uma arquitetura persistente paga; consulte o guia antes de escolher.
 
 Este é um MVP acadêmico. Os [limites e melhorias](docs/PROJETO.md#limites-do-mvp) descrevem o que falta para uma operação comercial.

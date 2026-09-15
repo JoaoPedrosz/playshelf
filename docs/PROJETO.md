@@ -208,7 +208,7 @@ Uma implantação com redundância requer outro servidor, autenticação, transp
 - Recuperação operacional manual; faltam supervisão de pedidos pendentes, alertas e orquestração automática.
 - Catálogo e pedidos totalmente carregados para esta escala acadêmica; ampliar a paginação antes de escalar.
 - Imagens dependem de rede e podem mudar de disponibilidade; cache contém links, não arquivos de imagem.
-- O deploy no Render ainda depende da publicação manual e da ativação pelo usuário. Não foi validado em produção.
+- A prévia gratuita do Render usa armazenamento efêmero; a arquitetura persistente exige serviços pagos. O deploy ainda precisa de validação online.
 
 ## 9. Cobertura da entrega FACAMP
 

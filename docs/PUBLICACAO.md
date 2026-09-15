@@ -10,7 +10,24 @@
 
 O `.env`, o banco local e senhas ficam fora do repositório. O projeto não deve ser adicionado por engano ao repositório de outro trabalho. Se o professor precisar acessar, compartilhe o acesso privado com a conta que ele informar.
 
-## Deploy futuro no Render
+## Deploy no Render
+
+Há duas configurações independentes:
+
+| Arquivo | Custo inicial | Comportamento |
+|---|---:|---|
+| `render-free.yaml` | US$ 0 | Flask e CouchDB real no mesmo contêiner; catálogo é recriado e contas/pedidos somem após suspensão, reinício ou deploy |
+| `render.yaml` | Aproximadamente US$ 43,25/mês | Web separada, CouchDB privado e disco persistente de 1 GB |
+
+Os valores refletem a tabela consultada em setembro de 2026 e podem mudar. O plano gratuito é adequado para uma demonstração acadêmica, desde que a perda de dados seja declarada. Ele não publica a porta do CouchDB: somente a loja fica acessível. A arquitetura persistente é a referência para continuidade dos pedidos.
+
+### Prévia acadêmica gratuita
+
+Ao criar o Blueprint, informe `render-free.yaml` no campo **Blueprint Path**. Um único serviço Docker instala o Python, inicia um CouchDB 3.5.2 local ao contêiner, inicializa o catálogo e serve o Flask. O Render gera chaves aleatórias e não pede cartão para esse plano.
+
+Serviços gratuitos suspendem após inatividade. Ao voltar, a primeira abertura pode levar cerca de um minuto e o banco começa novamente com os 12 produtos. Não use dados pessoais reais na demonstração.
+
+### Arquitetura persistente paga
 
 O arquivo `render.yaml` descreve dois serviços:
 
@@ -40,4 +57,4 @@ Separar usuário administrativo e usuário de aplicação, configurar backup com
 
 ## Estado atual
 
-Configuração entregue e testada localmente. A publicação manual e a criação dos serviços no Render ainda não foram executadas nesta entrega.
+Repositório privado publicado. Configurações do Render preparadas; registre a URL e o resultado do health check depois da implantação escolhida.
